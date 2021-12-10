@@ -1,0 +1,130 @@
+.divRow
+{
+   display:table-row;
+   width:auto;
+}
+
+.spazio
+{
+    float:left;/*fix for  buggy browsers*/
+    display:table-column;
+    width:350px;
+    margin-top: 25px;
+    padding: 8px 62px;
+}
+
+.titoli
+{
+    display: flexbox;
+    display: -webkit-flex;
+    justify-content: start;
+    border-bottom: 5px solid black;
+    width:600px;
+    text-align: center;
+    font-size: xx-large;
+    color: black;
+    background-color: white;
+}
+
+input[type=text],[type=password],[type=date],[type=radio]
+{
+    font-size: x-large;
+    margin-left: 5px;
+    outline: none;
+    width:350px;
+    padding: 10px;
+    justify-content: center;
+    color: black;
+    background-color: white;
+    border: none;
+    border-bottom: 3px solid black;
+    transition: all 0.3s ease;
+
+}
+input[type=text]:focus,input[type=password]:focus,input[type=date]:focus,input[type=radio]:focus
+{
+    border-bottom: 3px solid rgba(0,104,255,1);
+}
+input[type=text]:hover,input[type=password]:hover,input[type=date]:hover,input[type=radio]:hover
+{
+  width: 105%;
+  padding: 12px;
+  border-bottom: 3px solid rgba(0,104,255,1);
+}
+#p:focus{border-bottom: 3px solid rgb(255, 196, 0);}#p:hover{border-bottom: 3px solid rgb(255, 196, 0);}
+
+#error
+{
+    border-bottom: 3px solid red;
+}
+#error:focus
+{
+    border-bottom: 3px solid rgba(0,104,255,1);
+}
+
+
+.radio .option
+{
+    font-size: x-large;
+    margin-left: 10%;
+    outline: none;
+    width:350px;
+    padding: 10px;
+    justify-content: center;
+    color: black;
+    background-color: white;
+    border: none;
+    border-bottom: 3px solid black;
+    background: #fff;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    border: 4px solid black;
+    transition: all 0.2s ease;
+  }
+  input[type="radio"]{
+    display: none;
+  }
+  #option-1:hover ~ .option-1 ,
+  #option-2:hover ~ .option-2 {
+    padding: 16px;
+    border-color: rgba(0,104,255,1);
+  }
+  /* #option-1:checked:checked ~ .option-1,
+  #option-2:checked:checked ~ .option-2{
+    border-color: rgba(0,104,255,1);
+  } */
+  #option-1:checked:checked ~ .option-1 span,
+  #option-2:checked:checked ~ .option-2 span{
+    color: rgba(0,104,255,1);
+  }
+
+  #c{border-color:red;}
+
+.btnGo
+{
+    display: -webkit-flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    outline: none;
+    background-color: white;
+    font-size: large;
+    padding: 8px 62px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    transition: all 0.8s ease;
+}
+.btnGo:hover
+{
+    justify-content: center;
+    text-align: center;
+    color: rgba(0,104,255,1);
+    border: 2px solid rgba(0,104,255,1);
+    padding: 8px 120px;
+}

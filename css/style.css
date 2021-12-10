@@ -1,0 +1,85 @@
+body
+{
+    background: rgb(0,245,255);
+	background: linear-gradient(90deg, rgba(0,245,255,1) 0%, rgba(0,104,255,1) 49%, rgba(0,30,73,1) 100%);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1
+{
+    text-align: center;
+}
+
+.Tavolo
+{
+    min-width: 600px;
+    padding: 50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border-radius: 10px;
+    border-spacing:5px;/*cellspacing:poor IE support for  this*/
+   /* border-collapse:separate;*/
+    justify-content: start;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 3px solid black;
+}
+
+
+.btnMark
+{
+    display: -webkit-flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border: 0px solid black;
+    outline: none;
+    background-color: white;
+    font-size: large;
+    padding: 8px 62px;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    transition: all 0.8s ease;
+}
+.btnMark:hover
+{
+    justify-content: center;
+    text-align: center;
+    color: rgba(0,104,255,1);
+    font-size: x-large;
+}
+
+footer
+{   
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%; 
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+footer #nome
+{
+    margin-left: 80px;
+} 
+footer #frase2
+{
+    margin-left: 60px;
+}
+#link
+{
+    color: white;
+    text-decoration: none;
+}
+#link:hover
+{
+    color: rgba(0,104,255,1);
+}

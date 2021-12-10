@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleregistra.css">
+    <title>Registra</title>
+</head>
+<body>
+    <div class="Tavolo">
+        <h1>Registrati</h1>
+        
+        <form action="registrauser.php" method="POST" name="inserimento">
+            <div class="divRow">
+                 <div class="spazio">
+                    <input type="text" placeholder="First Name" name="f0" class="" value="">
+                </div>
+                <div class="spazio">
+                    <input type="text" placeholder="Last name" name="f1" value="">
+                </div>
+            </div>
+            <div class="divRow">
+                <div class="spazio">
+                    <input type="text" placeholder="Email" name="f2" value="">
+                </div>
+                <div class="spazio">
+                    <input type="text" placeholder="Email di Conferma" name="EmailC" value="">
+                </div>
+           </div>
+           <div class="divRow">
+                <div class="spazio">
+                    <input type="password" placeholder="Password" name="f3" value="">
+                </div>
+                <div class="spazio">
+                    <input type="password" placeholder="Password di Conferma" name="PasswordC" value="">
+                </div>
+            </div>
+            <div class="divRow">
+                <div class="spazio">
+                    <input type="date" placeholder="Data di Nascita" name="f4" value="">
+                </div>
+                <div class="spazio radio">
+                    <input type="radio" name="f5" value="Maschio" id="option-1">
+                    <input type="radio" name="f5" value="Femmina" id="option-2">
+                      <label for="option-1" class="option option-1" name="lblSex" id="">
+                        <span>Maschio</span>
+                         </label>
+                      <label for="option-2" class="option option-2" name="lblSex" id="">
+                         <span>Femmina</span>
+                      </label>
+                   </div>
+            </div>
+            <div class="divRow">
+                <div class="spazio">
+                    <input type="text" placeholder="Username" name="f6" value="">
+                </div>
+                <div class="spazio">
+                    <input type="text" placeholder="Telefono" name="f7" id="p" value="">
+                </div>
+            </div>
+            <div class="divRow">
+                <div class="spazio">
+                    <input class="btnGo" type="button" value="Registrati" onclick="ValidateData()">
+                </div>
+                <div class="spazio">
+                    <input class="btnGo" type="button" value="Reset" onclick="Reset()">
+                </div>
+            </div>
+            <a id="link" href="index.html"><input class="btnMark" type="button" value="Hai giá un account?.. Accedi!"></a>
+        </form>
+    </div>
+    <footer align="center" >
+        <a id="link" href="https://github.com/pallaxx"><p id="nome"> © – Copyright. - Alex Mazzoni ® - All rights reserved - Registra User™.</p></a>
+    </footer>
+    <script src="javascript/scriptregistra.js"></script>
+</body>
+</html>

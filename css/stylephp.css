@@ -1,0 +1,58 @@
+.Row
+{
+   display:table-row;
+   width:auto;
+}
+  
+.spazio
+{
+    float:left;/*fix for  buggy browsers*/
+    display:table-column;
+    width:450px;
+    margin-top: 25px;
+    padding: 8px 62px;
+}
+
+.spaziologin
+{
+    float:left;/*fix for  buggy browsers*/
+    display:table-column;
+    width:50%;
+    margin-top: 5px;
+}
+
+.titoli
+{
+    display: flexbox;
+    display: -webkit-flex;
+    justify-content: start;
+    width:350px;
+    text-align: center;
+    font-size: xx-large;
+    color: black;
+}
+
+.field
+{
+    font-size: x-large;
+    margin-left: 5px;
+    outline: none;
+    width:100%;
+    padding: 10px;
+    justify-content: center;
+    color: black;
+    border: none;
+    border-bottom: 3px solid black;
+    transition: all 0.1s;
+}
+.field:hover
+{
+    width: 110%;
+    border-bottom: 3px solid rgb(0, 255, 64);
+}
+
+#error:hover
+{
+    width: 110%;
+    border-bottom: 3px solid rgb(255, 0, 0);
+}
