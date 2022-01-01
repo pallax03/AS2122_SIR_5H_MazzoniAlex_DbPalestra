@@ -48,14 +48,31 @@
 
     mysqli_query($conn, $sql);
 
-
+      //SERVIZI
     $sql = "CREATE TABLE IF NOT EXISTS `Service`(
         IdService INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         Nome VARCHAR(30) NOT NULL,
         Costo VARCHAR(30) NOT NULL
     )";
-      
     mysqli_query($conn, $sql);
+
+    $sql = "INSERT INTO Service (Nome, Costo)
+    Select 'SPA', '40' Where not exists(select * from Service where Nome='SPA')";
+    mysqli_query($conn, $sql);
+    $sql = "INSERT INTO Service (Nome, Costo)
+    Select 'Sala Pesi', '20' Where not exists(select * from Service where Nome='Sala Pesi')";
+    mysqli_query($conn, $sql);
+    $sql = "INSERT INTO Service (Nome, Costo)
+    Select 'Corso Spinning', '50' Where not exists(select * from Service where Nome='Corso Spinning')";
+    mysqli_query($conn, $sql);
+    $sql = "INSERT INTO Service (Nome, Costo)
+    Select 'Boxe', '60' Where not exists(select * from Service where Nome='Boxe')";
+    mysqli_query($conn, $sql);
+
+    $_SESSION['servizi']['SPA'] = "40";
+    $_SESSION['servizi']['Sala Pesi'] = "20";
+    $_SESSION['servizi']['Corso Spinning'] = "50";
+    $_SESSION['servizi']['Boxe'] = "60";
 
 
     $sql = "CREATE TABLE IF NOT EXISTS `Include`(

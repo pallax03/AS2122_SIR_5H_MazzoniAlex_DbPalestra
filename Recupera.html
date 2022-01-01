@@ -13,10 +13,19 @@
         <h1>Recupera Password</h1>
         <form action="recupera.php" method="POST" name="recupera">
             <input type="text" placeholder="Email" name="f0" required>
-            <input class="btnGo" type="button" value="Recupera" onclick="ValidateData()">
-            <a id="link" href="index.html"><input class="btnMark" type="button" value="Hai giá un account?.. Accedi!"></a>
+            <input class="btnGo" id="myBtn" type="button" value="Recupera" onclick="ValidateData()">
+            <a id="link" href="index.php"><input class="btnMark" type="button" value="Hai giá un account?.. Accedi!"></a>
         </form>
     </div>
+    <script>
+        var input = document.recupera.f0;
+        input.addEventListener("keyup", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("myBtn").click();
+          }
+        });
+    </script>
     <footer align="center" >
         <a id="link" href="https://github.com/pallaxx"><p id="nome"> © – Copyright. - Alex Mazzoni ® - All rights reserved - Recupera™.</p></a>
     </footer>

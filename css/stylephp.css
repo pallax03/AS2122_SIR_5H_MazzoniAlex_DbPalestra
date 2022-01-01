@@ -1,4 +1,4 @@
-.Row
+.divRow
 {
    display:table-row;
    width:auto;
@@ -6,38 +6,53 @@
   
 .spazio
 {
-    float:left;/*fix for  buggy browsers*/
+    float: left;
     display:table-column;
-    width:450px;
+    width:400px;
     margin-top: 25px;
     padding: 8px 62px;
 }
 
+.spaziofrase
+{
+    margin-bottom: 20px;
+    border-left: 3px solid black;
+    float:left;
+    display:table-column;
+    width:fit-content;
+}
+
 .spaziologin
 {
-    float:left;/*fix for  buggy browsers*/
+    float:left;
     display:table-column;
     width:50%;
     margin-top: 5px;
+}
+
+.spaziobtn
+{
+    margin-bottom: 20px;
+    float:left;
+    display:table-column;
 }
 
 .titoli
 {
     display: flexbox;
     display: -webkit-flex;
-    justify-content: start;
-    width:350px;
+    width:450px;
     text-align: center;
     font-size: xx-large;
     color: black;
-}
+} 
 
 .field
 {
     font-size: x-large;
     margin-left: 5px;
     outline: none;
-    width:100%;
+    width:420px;
     padding: 10px;
     justify-content: center;
     color: black;
@@ -47,12 +62,312 @@
 }
 .field:hover
 {
-    width: 110%;
-    border-bottom: 3px solid rgb(0, 255, 64);
+    width: 450px;
+    border-bottom: 3px solid rgba(0,104,255,1);
 }
 
-#error:hover
+.frasi
 {
-    width: 110%;
+    margin-left: 10px;
+    font-size: large;
+    outline: none;
+    width:350px;
+    padding: 2px 0px;
+    color: black;
+    border: none;
+    transition: all 0.1s;
+}
+
+.btnConfirm
+{
+    display: -webkit-flex;
+    margin-left: auto;
+    margin-right: auto;
+    outline: none;
+    background-color: white;
+    font-size: large;
+    padding: 8px 62px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    transition: all 0.8s ease;
+}
+.btnConfirm:hover
+{
+    justify-content: center;
+    text-align: center;
+    color: rgba(0,104,255,1);
+    border: 2px solid rgba(0,104,255,1);
+    padding: 8px 200px;
+}
+
+.btnShow
+{
+    position: relative;
+    margin-left: 40px;
+    display: -webkit-flex;
+    outline: none;
+    width: 150px;
+    background-color: white;
+    color: black;
+    padding: 8px 100px;
+    border: 2px solid black;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: black;
+    transition: all 0.2s linear;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.btnShow:hover
+{
+    animation: btn 30s infinite;
+}
+
+@keyframes btn {
+    0% {border: 2px solid rgba(0,104,255,1)}
+    100%{border: 2px solid rgb(0, 0, 0)}
+  }
+
+  
+.spaziofrase.hovered 
+{
+    animation: try 30s infinite;
+    border-left: 3px solid rgba(0,104,255,1);
+}
+@keyframes try {
+    0% {border-left: 3px solid rgba(0,104,255,1);}
+    100%{border-left: 3px solid rgb(0, 0, 0)}
+  }
+
+
+
+input[type=date]
+{
+    font-size: x-large;
+    margin-left: 5px;
+    outline: none;
+    width:350px;
+    padding: 10px;
+    justify-content: center;
+    color: black;
+    background-color: white;
+    border: none;
+    border-bottom: 3px solid black;
+    transition: all 0.3s ease;
+
+}
+input[type=date]:focus
+{
+    border-bottom: 3px solid rgba(0,104,255,1);
+}
+input[type=date]:hover
+{
+  width: 400px;
+  padding: 12px;
+}
+
+.inputdataStart:hover
+{
+    border-bottom: 3px solid rgb(0, 255, 64);
+}
+.inputdataEnd:hover
+{
     border-bottom: 3px solid rgb(255, 0, 0);
 }
+
+#error
+{
+    border-bottom: 3px solid red;
+}
+#error:focus
+{
+    border-bottom: 3px solid rgba(0,104,255,1);
+}
+
+.Tabella
+{
+    width: 200px;
+    margin-left: 20px;
+    float:left;
+    display:table-column;
+}
+
+
+.Scadenza
+{
+    font-size: medium;
+    margin-left: 20px;
+}
+
+.likeBtnShow
+{
+    display: -webkit-flex; 
+    margin-left: 185px;
+    float: right;
+    outline: none;
+    width: 200px;
+    background-color: white;
+    color: black;
+    padding: 8px 0px;
+    border: 2px solid black;
+    justify-content: center;
+    box-shadow: black;
+    transition: all 0.2s linear;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.centra
+{
+    position: relative;
+    justify-content: center;
+    margin-left: 100px;
+}
+
+.centrachkBox
+{
+    position: relative;
+    justify-content: center;
+    margin-left: 120px;
+}
+
+.strike
+{
+    text-decoration: line-through;
+    text-decoration-color: red;
+    text-decoration-style: solid;
+    text-decoration-thickness: 1px;
+}
+.prova
+{
+    display: inline-block;
+}
+
+.X::before
+{
+    content: "•";
+    font-size: x-large;
+    color: red;
+    vertical-align: middle;
+}
+.Y::before
+{
+    content: "🗸";
+    font-size: x-large;
+    color: rgb(0, 255, 64);
+    vertical-align: middle;
+}
+
+.titolo
+{
+    text-align: center;
+    font-size: large;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .containerfield {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .containerfield input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+      color: darkgray;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: white;
+  }
+  .containerfield input:checked ~ .checkmark {
+    background-color: white;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  .containerfield input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid rgb(0, 255, 64);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    
+  }
+
+  .containerfield .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid rgb(0, 255, 64);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    $cookie_name = "User";
+    // setcookie($cookie_name, "", time());
+    if(isset($_COOKIE[$cookie_name])){include 'login.php';die();}
+    session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,11 +28,21 @@
                 </div>
                 <div class="spazio">
                     <a id="link" href="Registra.html"><input class="btnMark" type="button" value="Crea il tuo account..."></a>
-                </div>       
+                </div>
             </div>
-            <input class="btnGo" type="button" value="Accedi" onclick="ValidateData()">
+            <input class="btnGo" id="myBtn" type="button" value="Accedi" onclick="ValidateData()">
         </form>
     </div>
+    <script>
+        var input = document.login.f1;
+        input.addEventListener("keyup", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("myBtn").click();
+          }
+        });
+    </script>
+    
     <footer align="center" >
         <a id="link" href="https://github.com/pallaxx"><p id="nome"> © – Copyright. - Alex Mazzoni ® - All rights reserved - Login™.</p></a>
     </footer>

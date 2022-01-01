@@ -18,49 +18,42 @@
     $arrayName = ["Nome: ", "Cognome: ", "Email: ", "Password: ", "Data di Nascita: ", "Sesso: ", "Username: ", "Telefono: "];
     $n = count($arrayName);
     for($i=0; $i<$n; $i++)
-      $valori[] =$_POST["f".$i];
+      $row[] =$_POST["f".$i];
 
     //Vecchio modo
     // $sql = "INSERT INTO User (firstname, lastname, email, psw, birthday, sesso, username, telefono)
-    //   VALUES ('".$valori[0]."', '".$valori[1]."', '".$valori[2]."', '".$valori[3]."', '".$valori[4]."', '".$valori[5]."', '".$valori[6]."', '".$valori[7]."')";
+    //   VALUES ('".$row[0]."', '".$row[1]."', '".$row[2]."', '".$row[3]."', '".$row[4]."', '".$row[5]."', '".$row[6]."', '".$row[7]."')";
     
-    $sql = "SELECT email FROM User";
+    $sql = "SELECT email FROM User WHERE email='".$row[2]."'";
     $result = $conn->query($sql);
-    $flag = false;
     
     if ($result->num_rows > 0) 
-    {
-        // output data of each row
-        while($row = $result->fetch_assoc()) 
-        {
-            if($valori[2] == $row["email"])
-              $flag=true;
-        }
-    } 
-
-    if($flag)
-    {echo "<h1> User: ".$valori[2].", già registrato! </h1> ";}
+    {echo "<h1> User: ".$row[2].", già registrato! </h1> ";}
     else
     {
       //Nuovo modo
-      $sql = "INSERT INTO User (firstname, lastname, email, psw, birthday, sesso, username, telefono) VALUES(";
-      for ($i = 0; $i < $n; $i++) 
-      { 
-        $sql .= "'".$valori[$i]."'";
-        if($i < $n-1)
-          $sql .= ", ";
-      }
-      $sql .= ")";
+      // $sql = "INSERT INTO User (firstname, lastname, email, psw, birthday, sesso, username, telefono) VALUES(";
+      // for ($i = 0; $i < $n; $i++) 
+      // { 
+      //   $sql .= "'".$row[$i]."'";
+      //   if($i < $n-1)
+      //     $sql .= ", ";
+      // }
+      // $sql .= ")";
+
+      $sql = "INSERT INTO User (firstname, lastname, email, psw, birthday, sesso, username, telefono)
+      VALUES ('".$row[0]."', '".$row[1]."', '".$row[2]."', '".md5($row[3])."', '".$row[4]."', '".$row[5]."', '".$row[6]."', '".$row[7]."')";
+    
 
       if ($conn->query($sql) === TRUE) 
       {
         echo "<h1>Registrazione avvenuta con successo!</h1>";
 
         for ($j=0; $j < $n; $j=$j+2) 
-        { 
+        {   
             echo "<div class=\"divRow\"> ";
-            echo "<div class=\"spazio\"> <p class=\"titoli\">". $arrayName[$j] ."<p class=\"field\">".$valori[$j]."</p></p></div>";
-            echo "<div class=\"spazio\"> <p class=\"titoli\">". $arrayName[$j+1] ."<p class=\"field\">".$valori[$j+1]."</p></p></div>";
+            echo "<div class=\"spazio\"> <p class=\"titoli\">". $arrayName[$j] ."<p class=\"field\">".$row[$j]."</p></p></div>";
+            echo "<div class=\"spazio\"> <p class=\"titoli\">". $arrayName[$j+1] ."<p class=\"field\">".$row[$j+1]."</p></p></div>";
             echo "</div>";
         }
       } 
@@ -70,7 +63,7 @@
       }
     }
 
-    echo "<a id=\"link\" href=\"index.html\"><input class=\"btnMark\" type=\"button\" value=\"Torna indietro\"></a>";
+    echo "<a id=\"link\" href=\"registra.html\"><input class=\"btnMark\" type=\"button\" value=\"Torna indietro\"></a>";
     echo "</div>";
 
 

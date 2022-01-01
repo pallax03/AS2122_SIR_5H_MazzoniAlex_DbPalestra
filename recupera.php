@@ -29,7 +29,7 @@
             // output data of each row
             while($row = $result->fetch_assoc()) 
             {
-                echo "<h1>Credenziali non trovate!</h1> ";
+                echo "<h1>Email trovata!</h1> ";
                 echo "<div class=\"divRow\"> ";
                     echo "<div class=\"spazio\"> <p class=\"titoli\"> Email: <p class=\"field\">";
                         echo $email;
@@ -39,7 +39,7 @@
                         echo $row['psw'];
                     echo "</p></p></div>";
                 echo "</div>";
-                echo "<a id=\"link\" href=\"index.html\"><input class=\"btnMark\" type=\"button\" value=\"Torna indietro\"></a>";
+                echo "<a id=\"link\" href=\"recupera.html\"><input class=\"btnMark\" type=\"button\" value=\"Torna indietro\"></a>";
             }
         } 
         else 
@@ -53,7 +53,7 @@
             
             echo "<div class=\"divRow\"> ";
                 echo "<div class=\"spaziologin\">";
-                    echo "<a id=\"link\" href=\"index.html\"><input class=\"btnMark\" type=\"button\" value=\"Torna indietro\"></a>";
+                    echo "<a id=\"link\" href=\"index.php\"><input class=\"btnMark\" type=\"button\" value=\"Torna indietro\"></a>";
                 echo "</div>";
                 echo "<div class=\"spaziologin\">";
                     echo "<a id=\"link\" href=\"registra.html\"><input class=\"btnMark\" type=\"button\" value=\"Registrati\"></a>";
