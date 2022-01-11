@@ -21,19 +21,17 @@
 
         if($_SESSION['boolsub'] == 1)
             include 'TogliAbbonamento.php';
-
+            
         $startdate = $_POST["f0"];
         $finishdate = $_POST["f1"];
         $interessi = isset($_POST['interessi']) ? $_POST['interessi'] : array();
         $somma=20;//per sapere il costo totale dei servizi scelti
         for($i=0; $i<count($interessi);$i++){$somma += (int)$_SESSION['servizi'][$interessi[$i]];}
-
         //Stampa dati
         echo "<div class=\"Tavolo\"> ";
         $sql = "INSERT INTO subscription (DataInizio, DataFine, Costo, Fk_IdUser)
         VALUES ('".$startdate."', '".$finishdate."', '".$somma."', '".$_SESSION["userdata"]['IdUser']."')";
         mysqli_query($conn, $sql);
-
         $sql = "SELECT IdSubscription FROM subscription WHERE Fk_IdUser = '".$_SESSION["userdata"]['IdUser']."'";
         $result = mysqli_query($conn, $sql);
         $result->num_rows;
@@ -44,12 +42,11 @@
             $result = mysqli_query($conn, $sql);
             $result->num_rows;
             $row = $result->fetch_assoc();
-
             $sql = "INSERT INTO include (Fk_IdSubscription, Fk_IdService)
             VALUES ('".$id['IdSubscription']."', '".$row["IdService"]."')";
             mysqli_query($conn, $sql);
         }
-
+            
         mysqli_close($conn);
         header('Location: index.php'); //AMORE PER QUESTA FUNZIONE
     ?>

@@ -146,10 +146,16 @@
                     echo "<input class=\"btnConfirm\" type=\"button\" value=\"Crea il tuo abbonamento\" onclick=\"ValidateData()\">";
                 else
                     echo "<input class=\"btnConfirm\" type=\"button\" value=\"Modifica il tuo abbonamento\" onclick=\"ValidateData()\">";   
-            ?>
-            
-            
+            ?>          
         </form>
+        <?php
+            if($_SESSION['boolsub'] != 0)
+            {
+                echo "<form action=\"RimuoviAbbonamento.php\" method=\"POST\" name=\"rimuovi\">";
+                    echo "<input class=\"btnMark\" type=\"button\" value=\"Elimina il tuo abbonamento\" onclick=\"RimuoviAbbonamento()\">";
+                echo "</form>";
+            }
+        ?>
         <a id="link" href="index.php"><input class="btnMark" type="button" value="Torna indietro"></a>
     </div>
 

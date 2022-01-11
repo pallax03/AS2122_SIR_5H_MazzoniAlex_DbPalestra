@@ -72,7 +72,6 @@
                     if(!isset($_COOKIE[$cookie_name]))
                     {
                         // $_SESSION
-                        $cookie_name = "User";
                         $cookie_value = $email.";".$psw;
                         setcookie($cookie_name, $cookie_value, time() + 1800); // 86400 = 1 day
                         header('Location: index.php'); //AMORE PER QUESTA FUNZIONE
@@ -154,7 +153,7 @@
                         echo "<p class=\"Scadenza\">Valido da ".$row['DataInizio']." fino a ".$row['DataFine']."</p>";
                     echo "</div>";
                     echo "<div class=\"spaziobtn\">";
-                    echo "<p class=\"likeBtnShow\">Costo: ".$row['Costo']." €</p>";
+                        echo "<p class=\"likeBtnShow\">Costo: ".$row['Costo']." €</p>";
                     echo "</div>";
                 echo "</div>";
                 $_SESSION['subscriptiondata'] = $row;

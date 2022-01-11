@@ -27,3 +27,8 @@ function ValidateData()
     if(!flag)
         document.include.submit();
 }
+
+function RimuoviAbbonamento()
+{
+    document.rimuovi.submit();
+}
