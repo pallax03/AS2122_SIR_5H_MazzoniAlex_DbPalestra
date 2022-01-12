@@ -26,7 +26,14 @@
         $finishdate = $_POST["f1"];
         $interessi = isset($_POST['interessi']) ? $_POST['interessi'] : array();
         $somma=20;//per sapere il costo totale dei servizi scelti
-        for($i=0; $i<count($interessi);$i++){$somma += (int)$_SESSION['servizi'][$interessi[$i]];}
+        for($i=0; $i<count($interessi);$i++)
+        {
+            $sql = "SELECT Costo FROM Service WHERE Nome = '".$interessi[$i]."'";
+            $result = mysqli_query($conn, $sql);
+            mysqli_num_rows($result);
+            $row = mysqli_fetch_assoc($result);
+            $somma += (int)$row['Costo'];
+        }
         //Stampa dati
         echo "<div class=\"Tavolo\"> ";
         $sql = "INSERT INTO subscription (DataInizio, DataFine, Costo, Fk_IdUser)
@@ -34,14 +41,14 @@
         mysqli_query($conn, $sql);
         $sql = "SELECT IdSubscription FROM subscription WHERE Fk_IdUser = '".$_SESSION["userdata"]['IdUser']."'";
         $result = mysqli_query($conn, $sql);
-        $result->num_rows;
-        $id = $result->fetch_assoc();
+        mysqli_num_rows($result);
+        $id = mysqli_fetch_assoc($result);
         for($i=0; $i<count($interessi);$i++)
         {
             $sql = "SELECT * FROM service WHERE Nome = '".$interessi[$i]."'";
             $result = mysqli_query($conn, $sql);
-            $result->num_rows;
-            $row = $result->fetch_assoc();
+            mysqli_num_rows($result);
+            $row = mysqli_fetch_assoc($result);
             $sql = "INSERT INTO include (Fk_IdSubscription, Fk_IdService)
             VALUES ('".$id['IdSubscription']."', '".$row["IdService"]."')";
             mysqli_query($conn, $sql);

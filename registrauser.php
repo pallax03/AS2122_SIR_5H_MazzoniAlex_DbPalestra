@@ -25,9 +25,9 @@
     //   VALUES ('".$row[0]."', '".$row[1]."', '".$row[2]."', '".$row[3]."', '".$row[4]."', '".$row[5]."', '".$row[6]."', '".$row[7]."')";
     
     $sql = "SELECT email FROM User WHERE email='".$row[2]."'";
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
     
-    if ($result->num_rows > 0) 
+    if (mysqli_num_rows($result) > 0) 
     {echo "<h1> User: ".$row[2].", già registrato! </h1> ";}
     else
     {
@@ -45,7 +45,7 @@
       VALUES ('".$row[0]."', '".$row[1]."', '".$row[2]."', '".md5($row[3])."', '".$row[4]."', '".$row[5]."', '".$row[6]."', '".$row[7]."')";
     
 
-      if ($conn->query($sql) === TRUE) 
+      if (mysqli_query($conn, $sql)) 
       {
         echo "<h1>Registrazione avvenuta con successo!</h1>";
 
@@ -57,10 +57,6 @@
             echo "</div>";
         }
       } 
-      else 
-      {
-        echo "<h1>Error: ". $sql ." ". $conn->error ."</h1> ";
-      }
     }
 
     echo "<a id=\"link\" href=\"registra.html\"><input class=\"btnMark\" type=\"button\" value=\"Torna indietro\"></a>";

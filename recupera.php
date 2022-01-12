@@ -24,10 +24,10 @@
         $sql = "SELECT * FROM User WHERE email = '".$email."'";
         $result = mysqli_query($conn, $sql);
 
-        if ($result->num_rows > 0) 
+        if (mysqli_num_rows($result) > 0) 
         {
             // output data of each row
-            while($row = $result->fetch_assoc()) 
+            while($row = mysqli_fetch_assoc($result)) 
             {
                 echo "<h1>Email trovata!</h1> ";
                 echo "<div class=\"divRow\"> ";

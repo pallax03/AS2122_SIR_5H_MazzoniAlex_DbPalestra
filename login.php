@@ -58,14 +58,14 @@
             $_SESSION['servicedata'][$i]=0;
 
         $_SESSION['boolsub']=1;
+        $_SESSION['passepartout']=0;
         $n = count($arrayName);
 
         $sql = "SELECT * FROM User WHERE email = '".$email."'";
         $result = mysqli_query($conn, $sql);
-        if ($result->num_rows > 0) 
+        if (mysqli_num_rows($result) > 0) 
         {
-            // output data of each row
-            while($row = $result->fetch_assoc()) 
+            while($row = mysqli_fetch_assoc($result)) 
             {
                 if($row["psw"]==$psw)
                 {
@@ -77,6 +77,10 @@
                         header('Location: index.php'); //AMORE PER QUESTA FUNZIONE
                     }
                     $_SESSION['userdata'] = $row;
+
+                    if($row['email']=='admin')
+                        $_SESSION['passepartout']=1;
+
                     // echo "<h1>Bentornato ".$row[$arrayValue[0]]."!</h1> ";
                     // for ($j=0; $j < $n; $j=$j+2) 
                     // { 
@@ -128,14 +132,39 @@
         </div>
 
     <?php
-        
+        if($_SESSION['passepartout']==1)
+        {
+            echo "<div class=\"divRow\">";
+                echo "<form action=\"Servizi.php\" method=\"POST\" name=\"Servizi\">";
+                    echo "<div class=\"spaziofrase\" id=\"ToChange1\">";
+                        echo "<p class=\"frasi\">Vuoi modificare un servizio?</p>";
+                    echo "</div>";
+                    echo "<div class=\"spaziobtn\">";
+                        echo "<p><input type=\"submit\" id=\"Show1\" class=\"btnShow\" value=\"Modifica\"/></p>";
+                    echo "</div>";
+                echo "</form>";
+            echo "</div>";
+            
+            //Visualizzare tutta la lista degli abbonamenti
+            echo "<div class=\"divRow\">";
+            echo "<form action=\"Lista.php\" method=\"POST\" name=\"Lista\">";
+                echo "<div class=\"spaziofrase\" id=\"ToChange1\">";
+                    echo "<p class=\"frasi\">Vuoi visualizzare la pagina di gestione?</p>";
+                echo "</div>";
+                echo "<div class=\"spaziobtn\">";
+                    echo "<p><input type=\"submit\" id=\"Show1\" class=\"btnShow\" value=\"Entra\"/></p>";
+                echo "</div>";
+            echo "</form>";
+        echo "</div>";
+        }
+
         $sql = "SELECT * FROM Subscription WHERE Fk_IdUser = '".$_SESSION["userdata"]['IdUser']."'";
         $result = mysqli_query($conn, $sql);
 
-        if ($result->num_rows > 0) 
+        if (mysqli_num_rows($result) > 0) 
         {
             // output data of each row
-            while($row = $result->fetch_assoc()) 
+            while($row = mysqli_fetch_assoc($result)) 
             {
                 echo "<div class=\"divRow\"> ";
                     echo "<form action=\"abbonamento.php\" method=\"POST\" name=\"abbonamento\">";
@@ -159,49 +188,58 @@
                 $_SESSION['subscriptiondata'] = $row;
                 $sql = "SELECT * FROM include WHERE Fk_IdSubscription = '".$row['IdSubscription']."'";
                 $resultS = mysqli_query($conn, $sql);
-                
-
-                echo "<div class=\"centra\"><h2><span>Servizi:</span></h2></div>";
-                echo "<div class=\"divRow\">";
-                    echo "<div class=\"centra\">";
-                if ($resultS->num_rows > 0) 
+                if (mysqli_num_rows($resultS) > 0) 
                 {
                         $i=0;
                     // output data of each row
-                    while($rowS = $resultS->fetch_assoc()) 
+                    while($rowS = mysqli_fetch_assoc($resultS)) 
                     {
                         $_SESSION['servicedata'][$i] = $rowS['Fk_IdService'];
                         $i++;
                     }
                 }
 
-                $j=0;
-                for($i=0;$i<count($arrayService);$i++)
-                {
-                    if($_SESSION['servicedata'][$j]==$i+1)
-                    {
-                        echo "<div class=\"spaziologin\">";
-                            echo "<p class=\"prova\">";
-                                echo "<label class=\"container\">".$arrayService[$i]."";
-                                    echo "<input type=\"checkbox\" checked disabled><span class=\"checkmark\"</span>";
-                                echo "</label>";
-                            echo "</p>";
-                        echo "</div>";
-                        
-                        if(count($_SESSION['servicedata'])-1>$j)
-                            $j++;
-                    }
-                    else
-                    {
-                        echo "<div class=\"spaziologin\">";
-                            echo "<p class=\"prova\">";
-                                echo "<label class=\"container\">".$arrayService[$i]."";
-                                    echo "<input type=\"checkbox\" disabled><span class=\"checkmark\"</span>";
-                                echo "</label>";
-                            echo "</p>";
-                        echo "</div>";
-                    }
-                }
+                echo "<div class=\"centra\"><h2><span>Servizi:</span></h2></div>";
+                echo "<div class=\"divRow\">";
+                    echo "<div class=\"centra\">";
+                        $sql = "SELECT * FROM Service";
+                        $resultS = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($resultS) > 0) 
+                        {
+                            $i=0;
+                            while($rowS = mysqli_fetch_assoc($resultS)) 
+                            {   
+                                $flag = false;
+                                for ($i=0; $i < count($_SESSION['servicedata']); $i++) 
+                                { 
+                                    if($_SESSION['servicedata'][$i]==$rowS['IdService'])
+                                    {
+                                        $flag=true;
+                                    }
+                                }
+                                
+                                if($flag)
+                                {
+                                    echo "<div class=\"spaziologin\">";
+                                        echo "<p class=\"prova\">";
+                                            echo "<label class=\"container\">".$rowS['Nome']."";
+                                                echo "<input type=\"checkbox\" checked disabled><span class=\"checkmark\"</span>";
+                                            echo "</label>";
+                                        echo "</p>";
+                                    echo "</div>";
+                                }
+                                else
+                                {
+                                    echo "<div class=\"spaziologin\">";
+                                        echo "<p class=\"prova\">";
+                                            echo "<label class=\"container\">".$rowS['Nome']."";
+                                                echo "<input type=\"checkbox\" disabled><span class=\"checkmark\"</span>";
+                                            echo "</label>";
+                                        echo "</p>";
+                                    echo "</div>";
+                                }
+                            }
+                        }
                     echo "</div>";
                 echo "</div>";
             }

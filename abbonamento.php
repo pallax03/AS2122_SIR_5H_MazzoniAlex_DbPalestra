@@ -58,90 +58,46 @@
             </div>
             </br>
             <h1>Seleziona i servizi:</h1>
-            <div class="divRow">
-                <div class="spazio">
-                    <p class='field'>
-                        <?php
-                            $flag=false;
-                            echo "<label class=\"containerfield\">SPA";
-                            for($i=0;$i<count($_SESSION['servicedata']);$i++)
-                            {
-                                if($_SESSION['servicedata'][$i] == 1)
-                                {
-                                    echo "<input type=\"checkbox\" value=\"SPA\" name=\"interessi[]\" checked ><span class=\"checkmark\"></span>";
-                                    $flag=true; 
-                                }
-                            }
-                            if(!$flag)
-                                echo "<input type=\"checkbox\" value=\"SPA\" name=\"interessi[]\" ><span class=\"checkmark\"></span>";
-                            echo "</label>";
-                        ?>
-                    </p>
-                </div>
-                <div class="spazio">
-                    <p class='field'>
-                    <?php
-                            $flag=false;
-                            echo "<label class=\"containerfield\">Sala Pesi";
-                            for($i=0;$i<count($_SESSION['servicedata']);$i++)
-                            {
-                                
-                                if($_SESSION['servicedata'][$i] == 2)
-                                {
-                                    echo "<input type=\"checkbox\" value=\"Sala Pesi\" name=\"interessi[]\" checked ><span class=\"checkmark\"></span>";
-                                    $flag=true; 
-                                }
-                            }
-                            if(!$flag)
-                                echo "<input type=\"checkbox\" value=\"Sala Pesi\" name=\"interessi[]\" ><span class=\"checkmark\"></span>";
-                            echo "</label>";
-                        ?>
-                    </p>
-                </div>
-            </div>
-            <div class="divRow">
-                <div class="spazio">
-                    <p class='field'>
-                    <?php
-                        $flag=false;
-                        echo "<label class=\"containerfield\">Corso Spinning";
-                        for($i=0;$i<count($_SESSION['servicedata']);$i++)
-                        {
-                            
-                            if($_SESSION['servicedata'][$i] == 3)
-                            {
-                                echo "<input type=\"checkbox\" value=\"Corso Spinning\" name=\"interessi[]\" checked ><span class=\"checkmark\"></span>";
-                                $flag=true; 
-                            }
-                        }
-                        if(!$flag)
-                            echo "<input type=\"checkbox\" value=\"Corso Spinning\" name=\"interessi[]\" ><span class=\"checkmark\"></span>";
-                        echo "</label>";
-                        ?>
-                    </p>
-                </div>
-                <div class="spazio">
-                    <p class='field'>
-                    <?php
-                        $flag=false;
-                        echo "<label class=\"containerfield\">Boxe";
-                        for($i=0;$i<count($_SESSION['servicedata']);$i++)
-                        {
-                            if($_SESSION['servicedata'][$i] == 4)
-                            {
-                                echo "<input type=\"checkbox\" value=\"Boxe\" name=\"interessi[]\" checked ><span class=\"checkmark\"></span>";
-                                $flag=true; 
-                            }
-                        }
-                        if(!$flag)
-                            echo "<input type=\"checkbox\" value=\"Boxe\" name=\"interessi[]\" ><span class=\"checkmark\"></span>";
-                        echo "</label>";
-                        ?>
-                    </p>
-                </div>
-            </div>
-            
             <?php
+            include 'CreateDb.php';
+                $sql = "SELECT * FROM Service";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) 
+                {
+                    $i=0;
+                    while($row = mysqli_fetch_assoc($result)) 
+                    {   
+                        if(($i%2)==0)
+                            echo "<div class=\"divRow\">";
+
+                            echo "<div class=\"spazio\">";
+                                echo "<p class=\"field\">";
+                                    $flag=false;
+                                    echo "<label class=\"containerfield\">".$row['Nome']." ".$row['Costo']."€";
+                                    for($j=0;$j<count($_SESSION['servicedata']);$j++)
+                                    {
+                                        if($_SESSION['servicedata'][$j] == $i+1)
+                                        {
+                                            echo "<input type=\"checkbox\" value=\"".$row['Nome']."\" name=\"interessi[]\" checked ><span class=\"checkmark\"></span>";
+                                            $flag=true; 
+                                        }
+                                    }
+                                    if(!$flag)
+                                        echo "<input type=\"checkbox\" value=\"".$row['Nome']."\" name=\"interessi[]\" ><span class=\"checkmark\"></span>";
+                                    
+                                    echo "</label>";
+                                echo "</p>";
+                            echo "</div>";
+
+                        if(($i%2)==1)
+                            echo "</div>";
+                        $i++;
+                    }
+                }
+                if(($i%2)==1)
+                    echo "</div>";
+
+
                 if($_SESSION['boolsub'] == 0)
                     echo "<input class=\"btnConfirm\" type=\"button\" value=\"Crea il tuo abbonamento\" onclick=\"ValidateData()\">";
                 else

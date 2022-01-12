@@ -15,12 +15,6 @@
 
     //Update connection
     $conn = mysqli_connect($servername, $username, $password, $Nomedb);
-
-    //Check connection
-    if ($conn->connect_error)
-    {
-      die("<h1>Connection failed: ". mysqli_connect_error()."</h1> ");
-    }
       
     //Create Table
     $sql = "CREATE TABLE IF NOT EXISTS `User` (
@@ -69,12 +63,6 @@
     Select 'Boxe', '60' Where not exists(select * from Service where Nome='Boxe')";
     mysqli_query($conn, $sql);
 
-    $_SESSION['servizi']['SPA'] = "40";
-    $_SESSION['servizi']['Sala Pesi'] = "20";
-    $_SESSION['servizi']['Corso Spinning'] = "50";
-    $_SESSION['servizi']['Boxe'] = "60";
-
-
     $sql = "CREATE TABLE IF NOT EXISTS `Include`(
         Fk_IdSubscription INT(6) UNSIGNED NOT NULL,
         Fk_IdService INT(6) UNSIGNED NOT NULL,
@@ -82,6 +70,11 @@
         FOREIGN  KEY (Fk_IdService) REFERENCES Service(IdService)
     )";
       
+    mysqli_query($conn, $sql);
+
+    //Crea utente admin
+    $sql = "INSERT INTO User (firstname, lastname, email, psw, birthday, sesso, username, telefono)
+    Select 'Alex', 'Mazzoni', 'admin', '".md5('psw')."', '10/04/2003', 'Maschio', 'pallax', '0' Where not exists(select * from User where email='admin')";
     mysqli_query($conn, $sql);
 
     ?>

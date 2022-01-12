@@ -221,6 +221,7 @@ input[type=date]:hover
 
 .centra
 {
+    width: 500px;
     position: relative;
     justify-content: center;
     margin-left: 100px;

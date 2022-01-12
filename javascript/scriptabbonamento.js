@@ -10,7 +10,6 @@ function AggiornaVariabili()
     elementi = [startdate, finishdate];
 }
 
-
 function ValidateData()
 {
     AggiornaVariabili();
@@ -26,6 +25,7 @@ function ValidateData()
 
     if(!flag)
         document.include.submit();
+
 }
 
 function RimuoviAbbonamento()

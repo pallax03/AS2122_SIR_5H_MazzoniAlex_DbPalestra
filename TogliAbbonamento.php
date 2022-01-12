@@ -12,8 +12,8 @@
     <?php
         $sql = "SELECT IdSubscription FROM subscription WHERE Fk_IdUser = '".$_SESSION["userdata"]['IdUser']."'";
         $result = mysqli_query($conn, $sql);
-        $result->num_rows;
-        $id = $result->fetch_assoc();
+        mysqli_num_rows($result);
+        $id = mysqli_fetch_assoc($result);
         $sql = "DELETE FROM include WHERE Fk_IdSubscription=".$id['IdSubscription']."";
 
         if (mysqli_query($conn, $sql)) {
