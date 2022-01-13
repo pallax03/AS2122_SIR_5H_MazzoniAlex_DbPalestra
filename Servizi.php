@@ -9,18 +9,6 @@
     <title>Abbonamento</title>
 </head>
 <body>
-    <script>
-    function Add()
-    {
-        f=true;
-        ValidateData();
-    }
-    function Remove()
-    {
-        f=true;
-        ValidateData();
-    }
-    </script>
     <?php
     session_start();
     include 'ConnectDb.php';
@@ -86,8 +74,6 @@
                     echo "</div>";
 
                 echo "<input class=\"btnConfirm\" type=\"button\" value=\"Aggiungi Servizio\" onclick=\"Add()\">";
-
-                // echo "<input class=\"btnMark\" type=\"button\" value=\"Elimina Servizio\" onclick=\"Remove()\">"; 
         ?>
         </form>
         <a id="link" href="index.php"><input class="btnMark" type="button" value="Torna indietro"></a>

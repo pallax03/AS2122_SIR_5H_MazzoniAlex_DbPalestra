@@ -31,7 +31,7 @@
             echo "<div class=\"divRow\">";
                 echo "<form action=\"DatieAbbonamenti.php\" method=\"POST\" name=\"Dati\">";
                     echo "<div class=\"spaziofrase\">";
-                        echo "<p class=\"frasi\">".$row['IdUser']." ".$row['firstname']." ".$row['lastname']."</p>";
+                        echo "<p class=\"frasi\">".($i+1)." ".$row['firstname']." ".$row['email']."</p>";
                     echo "</div>";
                     echo "<div class=\"spaziobtn\">";
                         echo "<p><input type=\"submit\" class=\"btnShow\" value=\"Visualizza Dati\"/></p>";

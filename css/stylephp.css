@@ -19,6 +19,7 @@
     width:200px;
     margin-top: 25px;
     padding: 4px 31px;
+    margin-left: 20px;
 }
 
 .spaziofrase
@@ -75,7 +76,7 @@
 }
 .fieldmini
 {
-    font-size: x-large;
+    font-size: large;
     margin-left: 5px;
     outline: none;
     width:210px;

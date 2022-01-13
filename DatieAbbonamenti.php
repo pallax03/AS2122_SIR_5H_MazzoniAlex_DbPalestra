@@ -38,12 +38,12 @@
         echo "</div>";
     }
 
-
+    echo "</br></br>";
     $sql = "SELECT * FROM Subscription WHERE Fk_IdUser = '".$UtenteScelto."'";
     $result = mysqli_query($conn, $sql);
-
     if (mysqli_num_rows($result) > 0) 
     {
+        echo "<div class=\"centra\"><h2><span>Abbonamento:</span></h2></div>";
         // output data of each row
         while($row = mysqli_fetch_assoc($result)) 
         {
