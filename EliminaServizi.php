@@ -19,9 +19,25 @@
             die(); 
         }
 
-        include 'TogliAbbonamento.php';
-        
+        $nome = $_POST["f0"];
+
+        $sql = "SELECT * FROM Service WHERE Nome='".$nome."'";
+        $result = mysqli_query($conn, $sql);
+        mysqli_num_rows($result);
+        $rowS = mysqli_fetch_assoc($result);
+        $sql = "SELECT * FROM Include WHERE Fk_IdService='".$rowS['IdService'][0]."'";
+        $result = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($result) > 0)
+        {
+            $rowFindAbb = mysqli_fetch_assoc($result);
+            include 'AggiornaAbbonamenti.php';
+        }
+
+        $sql = "DELETE FROM Service WHERE Nome='".$nome."'";
+        mysqli_query($conn, $sql);
+            
         mysqli_close($conn);
+        
         header('Location: index.php'); //AMORE PER QUESTA FUNZIONE
     ?>
 </body>

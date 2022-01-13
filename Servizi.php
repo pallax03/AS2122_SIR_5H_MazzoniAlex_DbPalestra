@@ -9,10 +9,21 @@
     <title>Abbonamento</title>
 </head>
 <body>
-
+    <script>
+    function Add()
+    {
+        f=true;
+        ValidateData();
+    }
+    function Remove()
+    {
+        f=true;
+        ValidateData();
+    }
+    </script>
     <?php
     session_start();
-    include 'CreateDb.php';
+    include 'ConnectDb.php';
     $cookie_name = "User";
     if(!isset($_COOKIE[$cookie_name]) || $_SESSION['passepartout']!=1)//Se il cookie scade allora l'utente dovra' riaccedere e solo l'admin la puo' visualizzare
     {
@@ -74,7 +85,9 @@
                 if(($i%2)==1)
                     echo "</div>";
 
-                echo "<input class=\"btnConfirm\" type=\"button\" value=\"Aggiungi Servizio\" onclick=\"ValidateData()\">"; 
+                echo "<input class=\"btnConfirm\" type=\"button\" value=\"Aggiungi Servizio\" onclick=\"Add()\">";
+
+                // echo "<input class=\"btnMark\" type=\"button\" value=\"Elimina Servizio\" onclick=\"Remove()\">"; 
         ?>
         </form>
         <a id="link" href="index.php"><input class="btnMark" type="button" value="Torna indietro"></a>

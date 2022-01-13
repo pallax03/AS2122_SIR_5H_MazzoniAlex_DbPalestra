@@ -11,7 +11,7 @@
 <body>
     <?php
         session_start();
-        include 'CreateDB.php';
+        include 'ConnectDb.php';
         $cookie_name = "User";
         if(!isset($_COOKIE[$cookie_name]))//Se il cookie scade allora l'utente dovra' riaccedere
         {

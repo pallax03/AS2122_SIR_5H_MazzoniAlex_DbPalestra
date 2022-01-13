@@ -10,7 +10,7 @@
 </head>
 <body>
     <?php
-        include 'CreateDB.php';
+        include 'ConnectDb.php';
         //Stampa dati
         echo "<div class=\"Tavolo\"> ";
         $arrayValue = ['firstname', 'lastname', 'email', 'psw', 'birthday', 'sesso', 'username', 'telefono'];

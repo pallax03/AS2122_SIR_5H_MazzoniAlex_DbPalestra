@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include_once 'CreateDb.php';
     $cookie_name = "User";
     // setcookie($cookie_name, "", time());
     if(isset($_COOKIE[$cookie_name])){include 'login.php';die();}

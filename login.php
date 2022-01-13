@@ -47,7 +47,7 @@
         $email = $value[0];
         $psw = $value[1];
       }
-        include 'CreateDB.php';
+        include 'ConnectDb.php';
         //Stampa dati
         echo "<div class=\"Tavolo\"> ";
         $arrayValue = ['firstname', 'lastname', 'email', 'psw', 'birthday', 'sesso', 'username', 'telefono'];
@@ -80,15 +80,6 @@
 
                     if($row['email']=='admin')
                         $_SESSION['passepartout']=1;
-
-                    // echo "<h1>Bentornato ".$row[$arrayValue[0]]."!</h1> ";
-                    // for ($j=0; $j < $n; $j=$j+2) 
-                    // { 
-                    //     echo "<div class=\"divRow\"> ";
-                    //     echo "<div class=\"spazio\"> <p class=\"titoli\">". $arrayName[$j] ."<p class=\"field\">".$row[$arrayValue[$j]]."</p></p></div>";
-                    //     echo "<div class=\"spazio\"> <p class=\"titoli\">". $arrayName[$j+1] ."<p class=\"field\">".$row[$arrayValue[$j+1]]."</p></p></div>";
-                    //     echo "</div>";
-                    // }
                 }
                 else
                 {
@@ -134,6 +125,18 @@
     <?php
         if($_SESSION['passepartout']==1)
         {
+            //Visualizzare tutta la lista degli abbonamenti
+            echo "<div class=\"divRow\">";
+                echo "<form action=\"Lista.php\" method=\"POST\" name=\"Lista\">";
+                    echo "<div class=\"spaziofrase\" id=\"ToChange1\">";
+                        echo "<p class=\"frasi\">Vuoi visualizzare la pagina di gestione?</p>";
+                    echo "</div>";
+                    echo "<div class=\"spaziobtn\">";
+                        echo "<p><input type=\"submit\" id=\"Show1\" class=\"btnShow\" value=\"Entra\"/></p>";
+                    echo "</div>";
+                echo "</form>";
+            echo "</div>";
+
             echo "<div class=\"divRow\">";
                 echo "<form action=\"Servizi.php\" method=\"POST\" name=\"Servizi\">";
                     echo "<div class=\"spaziofrase\" id=\"ToChange1\">";
@@ -144,18 +147,6 @@
                     echo "</div>";
                 echo "</form>";
             echo "</div>";
-            
-            //Visualizzare tutta la lista degli abbonamenti
-            echo "<div class=\"divRow\">";
-            echo "<form action=\"Lista.php\" method=\"POST\" name=\"Lista\">";
-                echo "<div class=\"spaziofrase\" id=\"ToChange1\">";
-                    echo "<p class=\"frasi\">Vuoi visualizzare la pagina di gestione?</p>";
-                echo "</div>";
-                echo "<div class=\"spaziobtn\">";
-                    echo "<p><input type=\"submit\" id=\"Show1\" class=\"btnShow\" value=\"Entra\"/></p>";
-                echo "</div>";
-            echo "</form>";
-        echo "</div>";
         }
 
         $sql = "SELECT * FROM Subscription WHERE Fk_IdUser = '".$_SESSION["userdata"]['IdUser']."'";

@@ -74,7 +74,8 @@
 
     //Crea utente admin
     $sql = "INSERT INTO User (firstname, lastname, email, psw, birthday, sesso, username, telefono)
-    Select 'Alex', 'Mazzoni', 'admin', '".md5('psw')."', '10/04/2003', 'Maschio', 'pallax', '0' Where not exists(select * from User where email='admin')";
+    Select 'admin', 'admin', 'admin', '".md5('psw')."', '10/04/2003', 'Maschio', 'pallax', '0' Where not exists(select * from User where email='admin')";
     mysqli_query($conn, $sql);
 
+    mysqli_close($conn);
     ?>

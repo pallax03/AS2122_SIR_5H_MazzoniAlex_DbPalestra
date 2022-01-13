@@ -59,7 +59,7 @@
             </br>
             <h1>Seleziona i servizi:</h1>
             <?php
-            include 'CreateDb.php';
+            include 'ConnectDb.php';
                 $sql = "SELECT * FROM Service";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) 

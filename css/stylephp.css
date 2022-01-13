@@ -12,6 +12,14 @@
     margin-top: 25px;
     padding: 8px 62px;
 }
+.spaziomini
+{
+    float: left;
+    display:table-column;
+    width:200px;
+    margin-top: 25px;
+    padding: 4px 31px;
+}
 
 .spaziofrase
 {
@@ -64,6 +72,24 @@
 {
     width: 450px;
     border-bottom: 3px solid rgba(0,104,255,1);
+}
+.fieldmini
+{
+    font-size: x-large;
+    margin-left: 5px;
+    outline: none;
+    width:210px;
+    padding: 5px;
+    justify-content: center;
+    color: black;
+    border: none;
+    border-bottom: 2px solid black;
+    transition: all 0.1s;
+}
+.fieldmini:hover
+{
+    width: 225px;
+    border-bottom: 2px solid rgba(0,104,255,1);
 }
 
 .frasi
