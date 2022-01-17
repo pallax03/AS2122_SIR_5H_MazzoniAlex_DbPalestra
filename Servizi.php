@@ -73,7 +73,7 @@
                 if(($i%2)==1)
                     echo "</div>";
 
-                echo "<input class=\"btnConfirm\" type=\"button\" value=\"Aggiungi Servizio\" onclick=\"Add()\">";
+                echo "<input class=\"btnConfirm\" type=\"button\" value=\"Aggiungi Servizio\" onclick=\"ValidateData()\">";
         ?>
         </form>
         <a id="link" href="index.php"><input class="btnMark" type="button" value="Torna indietro"></a>
